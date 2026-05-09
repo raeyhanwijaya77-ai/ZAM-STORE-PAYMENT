@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Payment Zamm Store</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #020617, #000);
+  color: white;
+}
+
+.container {
+  max-width: 480px;
+  margin: auto;
+  padding: 15px;
+}
+
+.card {
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.05);
+  border-radius: 25px;
+  padding: 20px;
+  border: 1px solid rgba(255,215,0,0.4);
+  box-shadow: 0 0 40px rgba(255,215,0,0.3);
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(45deg, gold, #00c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.item {
+  margin: 12px 0;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(0,195,255,0.4);
+}
+
+.qris {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 20px gold;
+}
+
+.label {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.value {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(45deg, gold, orange);
+}
+
+.btn-blue {
+  background: linear-gradient(45deg, #00c3ff, #0044ff);
+}
+
+/* 🔥 TOAST */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: linear-gradient(45deg, gold, orange);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  opacity: 0;
+  transition: 0.3s;
+  box-shadow: 0 0 15px gold;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <div class="title">💰 PAYMENT ZAMM STORE</div>
+
+    <!-- DANA -->
+    <div class="item">087723647103
+      <div class="label">DANA</div>
+      <div class="value" id="dana">087723647103</div>
+      <div class="label">A/N: Don't Hive Name</div>
+
+      <div class="btn-group">
+        <button class="btn-blue btn" onclick="copyText('dana')">Salin</button>
+      </div>
+    </div>
+
+    <!-- GOPAY -->
+    <div class="item">
+      <div class="label">GOPAY</div>
+      <div class="value" id="gopay">087723647103</div>
+      <div class="label">A/N: Don't Have Name</div>
+
+      <div class="btn-group">
+        <button class="btn-blue btn" onclick="copyText('gopay')">Salin</button>
+      </div>
+    </div>
+
+    <!-- ACTION -->
+      <div class="btn-group">
+        <a href="https://wa.me/6287723647103" class="btn">Admin</a>
+        <a href="https://whatsapp.com/channel/0029VbCo1SYJkK7IcK2wyg0F" class="btn-blue btn">Channel</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="toast">Tersalin!</div>
+
+<script>
+function showToast(text){
+  const toast = document.getElementById("toast");
+  toast.innerText = text;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
+
+function copyText(id){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  showToast("Nomor berhasil disalin!");
+}
+
+</script>
+
+</body>
+</html>
